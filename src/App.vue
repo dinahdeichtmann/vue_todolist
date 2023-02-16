@@ -9,11 +9,30 @@ const inputCategory = ref(null);
 
 const todosAscending = computed(() =>
   todos.value.sort((a, b) => {
-    return a.createdAt - b.createdAt;
+    return b.createdAt - a.createdAt;
   })
 );
 
-function addTodo() {}
+function addTodo() {
+  if (inputContent.value.trim() === "" || inputCategory.value === null) {
+    return;
+  }
+
+  todos.value.push({
+    content: inputContent.value,
+    category: inputCategory.value,
+    done: false,
+    createdAt: new Date().getTime(),
+  });
+}
+
+watch(
+  todos,
+  (newValue) => {
+    localStorage.setItem("todos", JSON.stringify(newValue));
+  },
+  { deep: true }
+);
 
 watch(name, (newValue) => {
   localStorage.setItem("name", newValue);
@@ -21,6 +40,7 @@ watch(name, (newValue) => {
 
 onMounted(() => {
   name.value = localStorage.getItem("name") || "";
+  todos.value = JSON.parse(localStorage.getItem("todos")) || [];
 });
 </script>
 
@@ -66,6 +86,8 @@ onMounted(() => {
         <input type="submit" value="Add todo" />
       </form>
     </section>
+
+    {{ todosAscending }}
   </main>
 </template>
 
