@@ -29,6 +29,10 @@ function addTodo() {
   inputCategory.value = null;
 }
 
+function deleteTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo);
+}
+
 watch(
   todos,
   (newValue) => {
@@ -60,7 +64,7 @@ onMounted(() => {
         <h4>What's on your todo list?</h4>
         <input
           type="text"
-          placeholder="e.g. make a video"
+          placeholder="add to the list"
           v-model="inputContent"
         />
         <h4>Pick a category</h4>
@@ -102,6 +106,9 @@ onMounted(() => {
           </label>
           <div class="todo-content">
             <input type="text" v-model="todo.content" />
+          </div>
+          <div class="actions">
+            <button class="delete" @click="deleteTodo(todo)">Delete</button>
           </div>
         </div>
       </div>
