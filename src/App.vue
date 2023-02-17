@@ -24,6 +24,9 @@ function addTodo() {
     done: false,
     createdAt: new Date().getTime(),
   });
+
+  inputContent.value = "";
+  inputCategory.value = null;
 }
 
 watch(
@@ -86,8 +89,23 @@ onMounted(() => {
         <input type="submit" value="Add todo" />
       </form>
     </section>
-
-    {{ todosAscending }}
+    <section class="todo-list">
+      <h3>TODO LIST</h3>
+      <div class="list">
+        <div
+          v-for="todo in todosAscending"
+          :class="`todo-item ${todo.done && 'done'}`"
+        >
+          <label>
+            <input type="checkbox" v-model="todo.done" />
+            <span :class="`bubble ${todo.category}`"></span>
+          </label>
+          <div class="todo-content">
+            <input type="text" v-model="todo.content" />
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
