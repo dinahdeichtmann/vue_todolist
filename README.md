@@ -6,12 +6,12 @@ This **to-do list** is a **student project** I built in **Ludovic Laloux's class
 
 Working on this project, I learned to use **Vue.js 3**. I also added a stylish touch using **CSS**.
 
-## Technologies used
+## Technologies 
 
 - Vue.js 3
 - CSS
 
-## Skills gained
+## Skills 
 
 - Create a **single page application** using **Vue.js** and **Vite**
 - Handle **user inputs** with the **v-model** directive
