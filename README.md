@@ -18,7 +18,7 @@ Working on this project, I learned to use **Vue.js 3**. I also added a stylish t
 - Respond to and handle user events with **event handlers**
 - Use **computed properties** to iterate through arrays and objects
 - Use **lifecycle hooks** to run code at specific stages
-- **Store and retrieve data** using **local storage**
+- **Store data** in / **retrieve data** from **local storage**
 
 ## Functionalities
 
